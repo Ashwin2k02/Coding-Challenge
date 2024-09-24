@@ -36,6 +36,7 @@ public class SecurityConfig {
                        .requestMatchers("/add/tasks").hasRole("USER")
                        .requestMatchers("/allTasks").hasRole("USER")
                        .requestMatchers("/{taskid}").hasRole("USER")
+                       .requestMatchers("/delete/{id}").hasAnyRole("USER")
                        .requestMatchers("/user/hello").hasAnyRole("USER")
                        .anyRequest().authenticated()
                )

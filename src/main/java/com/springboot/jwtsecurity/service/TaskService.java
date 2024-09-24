@@ -27,4 +27,9 @@ public class TaskService {
 		return tasksRepository.findById(id);
 	}
 
+	public void deleteTaskById(int id) {
+		tasksRepository.deleteById(id);
+		System.out.println("Deleted taskId : " + id);
+	}
+
 }

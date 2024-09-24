@@ -6,5 +6,7 @@ import com.springboot.jwtsecurity.model.Tasks;
 
 public interface TasksRepository extends JpaRepository<Tasks, Integer>{
 
+	
+	
 
 }

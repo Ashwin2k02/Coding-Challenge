@@ -1,5 +1,6 @@
 package com.springboot.jwtsecurity.controller;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -9,12 +10,17 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.springboot.jwtsecurity.enums.PriorityType;
+import com.springboot.jwtsecurity.enums.Status;
 import com.springboot.jwtsecurity.model.Tasks;
 import com.springboot.jwtsecurity.service.TaskService;
+import com.springboot.my_boot_app.exception.InvalidIdException;
 
 @RestController
 @RequestMapping("/tasks")
@@ -46,5 +52,15 @@ public class TaskController {
 		taskService.deleteTaskById(id);
 	}
 	
+	@PutMapping("/update/{id}")
+	public ResponseEntity<Tasks> updateTaskById(@PathVariable int id, @RequestParam String title, @RequestParam String description,
+								@RequestParam LocalDate dueDate, @RequestParam PriorityType priority, @RequestParam Status status) throws InvalidIdException {
+		
+		Tasks updatedTasks = taskService.updateTaskById(id, title, description, dueDate, priority, status);
+		
+		return ResponseEntity.ok(updatedTasks);
+		
+		
+	}
 
 }

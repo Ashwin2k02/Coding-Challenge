@@ -22,8 +22,6 @@ public class User{ //u
 
 	private boolean isEnabled = true;
 	
-	
-
 	public User() {
 		super();
 		// TODO Auto-generated constructor stub

@@ -33,8 +33,9 @@ public class SecurityConfig {
                .authorizeHttpRequests(auth -> auth
                        .requestMatchers("/auth/token").permitAll()
                        .requestMatchers("/auth/signup").permitAll()
-                       .requestMatchers("/admin/hello").hasRole("ADMIN")
-                       .requestMatchers("/user/hello").hasAnyRole("USER", "ADMIN")
+                       .requestMatchers("/add/tasks").hasRole("USER")
+                       .requestMatchers("/allTasks").hasRole("USER")
+                       .requestMatchers("/user/hello").hasAnyRole("USER")
                        .anyRequest().authenticated()
                )
                .sessionManagement(session -> session
